@@ -6,7 +6,7 @@ var myAddress = '0.0.0.0';
 var http = require("http");
 var url = require("url");
 var qs = require("querystring");
-var userController = require("./controllers/userController.js");
+var mainController = require("./controllers/mainController.js");
 
 //Routes
 var router = function () {
@@ -16,7 +16,7 @@ var router = function () {
     var params = url.parse(request.url).query;
     
     if (pathname == "/") {
-      userController.functions.index(request, response);
+      mainController.functions.index(request, response);
     }
 
 
@@ -24,22 +24,22 @@ var router = function () {
     //IMAGES
     //------
     if (pathname == "/doubler.jpg") {
-      userController.functions.doubler(request, response);
+      mainController.functions.doubler(request, response);
     }
 
     if (pathname == "/wilkinson.jpg") {
-      userController.functions.wilkinson(request, response);
+      mainController.functions.wilkinson(request, response);
     }
 
     if (pathname == "/fiveStar.png") {
-      userController.functions.fiveStar(request, response);
+      mainController.functions.fiveStar(request, response);
     }
 
     //-----------
     //STYLESHEETS
     //-----------
     if (pathname == "/css/stylus.css") {
-      userController.functions.stylus(request, response);
+      mainController.functions.stylus(request, response);
     }
 
   }
