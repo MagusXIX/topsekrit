@@ -1,0 +1,27 @@
+body {
+  background-image: ;
+}
+
+.clear {
+  clear: both;
+}
+
+.restaurant {
+  margin-bottom: 20px;
+}
+
+.restaurant p {
+  margin-left: 110px;
+}
+
+.restaurantImg {
+  height: 100px;
+  width: 100px;
+  float: left;
+}
+
+.rating {
+  height: 30px;
+  width: 200px;
+  margin-left: 10px;
+}
