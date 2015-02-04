@@ -1,0 +1,22 @@
+{
+  "name": "topsekrit",
+  "version": "0.0.0",
+  "description": "Programming test for Getable",
+  "main": "start.js",
+  "dependencies": {
+    "mongojs": "0.18.x"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MagusXIX/topsekrit.git"
+  },
+  "author": "Michael Winniford",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MagusXIX/topsekrit/issues"
+  },
+  "homepage": "https://github.com/MagusXIX/topsekrit"
+}
