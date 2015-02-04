@@ -1,2 +1,3 @@
 # topsekrit
-Sh.
+
+This is definitely a top secret project.  The users, the ratings, and even the restaurants are all classified information.  If you've found this repo, it's too late.  Your computer will self-destruct in 10, 9, 8, 7 ...
