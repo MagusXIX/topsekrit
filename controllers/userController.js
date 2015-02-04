@@ -11,10 +11,10 @@ var respond = function(request, response, write){
 
 var index = function (request, response) {
   fs.readFile("./views/statics/mainView.html", function (err, data) {
-  	if (err) {
+    if (err) {
       console.log("YO! WE HAVE AN ERROR OVER HERE!");
       console.log(err);
-  	}
+    }
     respond(request, response, data);
   });
 }
