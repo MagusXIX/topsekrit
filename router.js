@@ -42,6 +42,13 @@ var router = function () {
       mainController.functions.stylus(request, response);
     }
 
+    //-------
+    //SCRIPTS
+    //-------
+    if (pathname == "/scripts/test.js") {
+      mainController.functions.testjs(request, response);
+    }
+
   }
   
   //Starting the server.

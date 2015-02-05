@@ -68,6 +68,20 @@ var functions = {
     })
   },
 
+  //-------
+  //SCRIPTS
+  //-------
+  testjs: function (request, response) {
+    fs.readFile("./views/scripts/test.js", function (err, data) {
+      if (err) {
+        console.log("YO! WE HAVE AN ERROR OVER HERE!");
+        console.log(err);
+      }
+      response.setHeader('content-type', 'text/javascript');
+      respond(request, response, data);
+    })
+  },
+
 }
 
 exports.functions = functions;

@@ -10,7 +10,7 @@
 <body>
 
   <!--STATIC HTML -->
-  <h1 class="cssplaceholder">Howdy, Partner!</h1>
+  <!--<h1 class="cssplaceholder">Howdy, Partner!</h1>
 
   <div class="restaurant">
     <img class="restaurantImg" src="wilkinson.jpg" alt="WTFM8"></img>
@@ -26,6 +26,26 @@
     <img class="rating" src="fiveStar.png" alt="WTFM8"></img>
     <p>4.5 stars</p>
   </div>
-  <div class="clear"></div>
+  <div class="clear"></div>-->
+
+  <div id="container">Loading...</div>
+
+  <!--TEMPLATES-->
+  <script type="text/template" id="restaurant-template">
+    <div class="restaurant">
+      <img class="restaurantImg" src="/wilkinson.jpg" alt="WTFM8">
+      <p>Wilkinsons Family Restaurant</p>
+      <img class="rating" src="fiveStar.png" alt="WTFM8"></img>
+      <p>4.88</p>
+    </div>
+  </script>
+
+  <!-- LIBRARIES -->
+  <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js" type="text/javascript"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone-min.js" type="text/javascript"></script>
+
+  <!-- SCRIPTS -->
+  <script type="text/javascript" src="../scripts/test.js"></script>
 
 </body>
