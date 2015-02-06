@@ -32,7 +32,6 @@ var router = function () {
     }
 
     if (pathname == "/redStar.png") {
-      console.log("Routing redstar");
       mainController.functions.redStar(request, response);
     }
 

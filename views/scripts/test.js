@@ -53,11 +53,30 @@ var run = function () {
       var view = new app.RestaurantView({model: restaurant});
       $('#mainCan').append("<img src='"+restaurants[i].image+"' class='restaurantImg' alt='WTFM8'></img>")
       var thisStarCan = 'starCan' + i.toString();
-      $('#mainCan').append("<div id='"+thisStarCan+"'></div>")
+      $('#mainCan').append("<div id='"+thisStarCan+"' class='starCan'></div>")
       $('#mainCan').append(view.render().el);
-      for (d = 0; d < Math.round(restaurants[i].rating); d++) {
-        $('#starCan'+i).append("<img class='rating' src='/redStar.png' alt='WTFM8'></img>")
+      for (d = 0; d < Math.ceil(restaurants[i].rating); d++) {
+        $('#starCan'+i).append("<img id='"+d+"' class='rating' src='/redStar.png' alt='WTFM8'></img>")
       }
+
+      //Manage star hover states with jQuery
+      $(function () {
+        $(".starCan")
+          .mouseenter(function () {
+            var self = this;
+            var stars = $("#"+self.id+" .rating");
+            $("#"+self.id+" .rating").hover(function () {
+              for (z in stars) {
+                if (stars[z].id > this.id) {
+                  $("#"+self.id+" #"+stars[z].id).hide();
+                }
+              }
+            })
+          })
+          .mouseleave(function () {
+            $(".starCan .rating").show();
+          })
+      })
     }
   })
 
