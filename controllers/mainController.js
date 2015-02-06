@@ -2,6 +2,7 @@
 
 //Required Modules
 var fs = require("fs");
+var Restaurants = require("../models/restaurant.js");
 
 var respond = function(request, response, write){
   response.writeHead(200, {"Content-Type": "text/html"});
@@ -77,10 +78,19 @@ var functions = {
         console.log("YO! WE HAVE AN ERROR OVER HERE!");
         console.log(err);
       }
-      response.setHeader('content-type', 'text/javascript');
+      response.setHeader('content-type', 'application/javascript');
       respond(request, response, data);
     })
   },
+
+  getRestaurant: function (request, response) {
+    Restaurants.functions.retrieveRestaurants(request, response);
+  },
+
+  sendRestaurants: function (request, response, restaurants) {
+    response.setHeader('content-type', 'application/json');
+    respond(request, response, JSON.stringify(restaurants));
+  }
 
 }
 

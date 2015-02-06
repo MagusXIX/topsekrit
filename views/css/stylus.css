@@ -6,6 +6,10 @@ body {
   clear: both;
 }
 
+#mainCan li {
+  list-style-type: none;
+}
+
 .restaurant {
   margin-bottom: 20px;
 }

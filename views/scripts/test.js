@@ -1,37 +1,60 @@
-//MODELS
-var app = {};
+//GET RESTAURANTS THEN RUN THE REST OF THE APP
+var restaurants;
 
-app.Restaurant = Backbone.Model.extend({
-    defaults: {
-        name: 'Wilkinsons Family Restaurant'
-      , imagePath: '/wilkinson.jpg'
-      , rating: '4.88'
-      , ratingsCount: '13'
+$.get("/getRestaurant", function (data) {
+  restaurants = JSON.parse(data);
+  run();  //YEAH, RUN! https://www.youtube.com/watch?v=1mENGatJBaY
+})
+
+var run = function () {
+  //MODELS
+  var app = {};
+
+  app.Restaurant = Backbone.Model.extend({
+      defaults: {
+          name: ''
+        , imagePath: ''
+        , rating: ''
+        , ratingsCount: ''
+      }
+  });
+
+  var restaurant = new app.Restaurant();
+
+  //COLLECTIONS
+  app.Restaurants = Backbone.Collection.extend({
+      model: app.Restaurant
+  });
+
+  app.Restaurants = new app.Restaurants();
+
+  //VIEWS
+  app.RestaurantView = Backbone.View.extend({
+      tagName: 'li'
+    , template: _.template($("#restaurant-template").html())
+    , initialize: function () {
+        this.render();
+      }
+    , render: function () {
+        this.$el.html(this.template(this.model.toJSON()));
+        $("#restaurantImg").attr("src", restaurants[i].image);
+        return this;
+      }
+  });
+
+  app.RestaurantViews = Backbone.View.extend({
+      el: '#mainCan'
+    , initialize: function () {
+        for (i = 0; i < restaurants.length; i++) {
+          this.addRestaurant();
+        }
+      }
+    , addRestaurant: function () {
+      var view = new app.RestaurantView({model: restaurant});
+      $('#mainCan').append("<img src='"+restaurants[i].image+"' class='restaurantImg' alt='WTFM8'></img>")
+      $('#mainCan').append(view.render().el);
     }
-  , url: "/restaurantModel"
-});
+  })
 
-var restaurant = new app.Restaurant();
-
-//COLLECTIONS
-app.Restaurants = Backbone.Collection.extend({
-    model: app.Restaurant
-  , url: "/restaurantCollection"
-  , 
-});
-
-app.Restaurants = new app.Restaurants();
-
-//VIEWS
-app.RestaurantView = Backbone.View.extend({
-    el: '#container'
-  , template: _.template($("#restaurant-template").html())
-  , initialize: function () {
-      this.render();
-    }
-  , render: function () {
-      this.$el.html(this.template(this.model.toJSON()));
-    }
-});
-
-var appView = new app.RestaurantView({model: restaurant});
+  app.restaurantView = new app.RestaurantViews();
+}

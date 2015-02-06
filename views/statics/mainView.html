@@ -9,34 +9,14 @@
 
 <body>
 
-  <!--STATIC HTML -->
-  <!--<h1 class="cssplaceholder">Howdy, Partner!</h1>
-
-  <div class="restaurant">
-    <img class="restaurantImg" src="wilkinson.jpg" alt="WTFM8"></img>
-    <p>Wilkinson's Family Restaurant</p>
-    <img class="rating" src="fiveStar.png" alt="WTFM8"></img>
-    <p>4.88 stars</p>
-  </div>
-  <div class="clear"></div>
-
-  <div class="restaurant">
-    <img class="restaurantImg" src="doubler.jpg" alt="WTFM8"></img>
-    <p>The Double R Diner</p>
-    <img class="rating" src="fiveStar.png" alt="WTFM8"></img>
-    <p>4.5 stars</p>
-  </div>
-  <div class="clear"></div>-->
-
-  <div id="container">Loading...</div>
+  <div id="mainCan"></div>
 
   <!--TEMPLATES-->
   <script type="text/template" id="restaurant-template">
     <div class="restaurant">
-      <img class="restaurantImg" src="/wilkinson.jpg" alt="WTFM8">
-      <p>Wilkinsons Family Restaurant</p>
+      <p><%- restaurants[i].name %></p>
       <img class="rating" src="fiveStar.png" alt="WTFM8"></img>
-      <p>4.88</p>
+      <p><%- restaurants[i].allRatings.length %> users rated this at <%- restaurants[i].rating %></p>
     </div>
   </script>
 

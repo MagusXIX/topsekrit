@@ -27,7 +27,7 @@ var router = function () {
       mainController.functions.doubler(request, response);
     }
 
-    if (pathname == "/wilkinson.jpg") {
+    if (pathname == "/wilkinsons.jpg") {
       mainController.functions.wilkinson(request, response);
     }
 
@@ -47,6 +47,10 @@ var router = function () {
     //-------
     if (pathname == "/scripts/test.js") {
       mainController.functions.testjs(request, response);
+    }
+
+    if (pathname == "/getRestaurant") {
+      mainController.functions.getRestaurant(request, response);
     }
 
   }
