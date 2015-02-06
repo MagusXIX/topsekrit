@@ -22,8 +22,8 @@ var functions = {
     var wilkinsons = {
         name: "Wilkinson's Family Restaurant"
       , image: "wilkinsons.jpg"
-      , rating: 0
-      , allRatings: []
+      , rating: 4.85
+      , allRatings: [4, 5, 5, 5, 5, 5, 5]
     }
     db.restaurants.save(this.model(wilkinsons), function (err, data) {
       if (err) {
@@ -34,8 +34,8 @@ var functions = {
     var doubler = {
         name: "Double R Diner"
       , image: "doubler.jpg"
-      , rating: 0
-      , allRatings: []
+      , rating: 4.5
+      , allRatings: [4, 4, 4, 5, 5, 5]
     }
     db.restaurants.save(this.model(doubler), function (err, data) {
       if (err) {

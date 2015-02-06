@@ -45,8 +45,8 @@ var functions = {
     })
   },
 
-  fiveStar: function (request, response) {
-    fs.readFile("./views/css/images/fiveStar.png", function (err, data) {
+  redStar: function (request, response) {
+    fs.readFile("./views/css/images/redStar.png", function (err, data) {
       if (err) {
         console.log("YO! WE HAVE AN ERROR OVER HERE!");
         console.log(err);

@@ -31,8 +31,9 @@ var router = function () {
       mainController.functions.wilkinson(request, response);
     }
 
-    if (pathname == "/fiveStar.png") {
-      mainController.functions.fiveStar(request, response);
+    if (pathname == "/redStar.png") {
+      console.log("Routing redstar");
+      mainController.functions.redStar(request, response);
     }
 
     //-----------

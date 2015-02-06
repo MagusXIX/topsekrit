@@ -10,14 +10,15 @@
 <body>
 
   <div id="mainCan"></div>
+  <h1>Click a star to rate!<h1>
 
   <!--TEMPLATES-->
   <script type="text/template" id="restaurant-template">
     <div class="restaurant">
       <p><%- restaurants[i].name %></p>
-      <img class="rating" src="fiveStar.png" alt="WTFM8"></img>
       <p><%- restaurants[i].allRatings.length %> users rated this at <%- restaurants[i].rating %></p>
     </div>
+    <div class="clear"></div>
   </script>
 
   <!-- LIBRARIES -->

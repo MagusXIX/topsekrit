@@ -52,7 +52,12 @@ var run = function () {
     , addRestaurant: function () {
       var view = new app.RestaurantView({model: restaurant});
       $('#mainCan').append("<img src='"+restaurants[i].image+"' class='restaurantImg' alt='WTFM8'></img>")
+      var thisStarCan = 'starCan' + i.toString();
+      $('#mainCan').append("<div id='"+thisStarCan+"'></div>")
       $('#mainCan').append(view.render().el);
+      for (d = 0; d < Math.round(restaurants[i].rating); d++) {
+        $('#starCan'+i).append("<img class='rating' src='/redStar.png' alt='WTFM8'></img>")
+      }
     }
   })
 
