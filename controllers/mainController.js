@@ -85,7 +85,6 @@ var functions = {
 
   updateRestaurant: function (request, response, data) {
     console.log("Updating restaurant.");
-    console.log(data);
     Restaurants.functions.updateRestaurant(request, response, data);
   },
 
