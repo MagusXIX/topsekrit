@@ -83,7 +83,13 @@ var functions = {
     })
   },
 
-  getRestaurant: function (request, response) {
+  updateRestaurant: function (request, response, data) {
+    console.log("Updating restaurant.");
+    console.log(data);
+    Restaurants.functions.updateRestaurant(request, response, data);
+  },
+
+  getRestaurants: function (request, response) {
     Restaurants.functions.retrieveRestaurants(request, response);
   },
 

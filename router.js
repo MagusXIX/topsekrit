@@ -49,8 +49,17 @@ var router = function () {
       mainController.functions.testjs(request, response);
     }
 
-    if (pathname == "/getRestaurant") {
-      mainController.functions.getRestaurant(request, response);
+    if (pathname == "/updateRestaurant") {
+      console.log("Routing single restaurant.");
+      request.on('data', function (chunk) {
+        var data = chunk.toString();
+        var dataJSON = JSON.parse(data);
+        mainController.functions.updateRestaurant(request, response, dataJSON);
+      })
+    }
+
+    if (pathname == "/getRestaurants") {
+      mainController.functions.getRestaurants(request, response);
     }
 
   }

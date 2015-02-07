@@ -13,10 +13,19 @@
   <h1>Click a star to rate!<h1>
 
   <!--TEMPLATES-->
+  <!--Images are added in the backbone code, for ease of adding correct src. Could switch to handlebars or similar in future.-->
   <script type="text/template" id="restaurant-template">
     <div class="restaurant">
       <p><%- restaurants[i].name %></p>
       <p><%- restaurants[i].allRatings.length %> users rated this at <%- restaurants[i].rating %></p>
+    </div>
+    <div class="clear"></div>
+  </script>
+
+  <script type="text/template" id="fetchedRestaurant-template">
+    <div class="restaurant">
+      <p><%- fetchedRestaurants[i].name %></p>
+      <p><%- fetchedRestaurants[i].allRatings.length %> users rated this at <%- fetchedRestaurants[i].rating %></p>
     </div>
     <div class="clear"></div>
   </script>

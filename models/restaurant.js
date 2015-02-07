@@ -54,6 +54,24 @@ var functions = {
         mainController.functions.sendRestaurants(request, response, restaurants);
       }
     })
+  },
+
+  updateRestaurant: function (request, response, restaurant) {
+    db.restaurants.findAndModify({
+      query: {name: restaurant.name},
+      update: {name: restaurant.name, image: restaurant.image, rating: restaurant.rating, allRatings: restaurant.allRatings},
+      new: true,
+    }, function (err, dbRestaurant) {
+      if (err) {
+        console.log("Error in updateRestaurant");
+        console.log(err);
+      } else if (dbRestaurant) {
+        functions.retrieveRestaurants(request, response); //Send new restaurants back to the client.
+      } else {
+        console.log("No match?");
+        console.log(dbRestaurant);
+      }
+    })
   }
 }
 
