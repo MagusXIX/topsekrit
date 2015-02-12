@@ -6,6 +6,8 @@ var myAddress = '0.0.0.0';
 var http = require("http");
 var url = require("url");
 var qs = require("querystring");
+var st = require("st");
+var mount = st({path: __dirname + '/static', url: 'static'});
 var mainController = require("./controllers/mainController.js");
 
 //Routes
@@ -14,56 +16,20 @@ var router = function () {
     console.log("Request received.");
     var pathname = url.parse(request.url).pathname;
     var params = url.parse(request.url).query;
-    
-    if (pathname == "/") {
+    var stHandled = mount(request, response);
+
+    if (stHandled) {
+      return;
+    } else if (pathname == "/") {
       mainController.functions.index(request, response);
-    }
-
-
-    //------
-    //IMAGES
-    //------
-    if (pathname == "/doubler.jpg") {
-      mainController.functions.doubler(request, response);
-    }
-
-    if (pathname == "/wilkinsons.jpg") {
-      mainController.functions.wilkinson(request, response);
-    }
-
-    if (pathname == "/redStar.png") {
-      mainController.functions.redStar(request, response);
-    }
-
-    //-----------
-    //STYLESHEETS
-    //-----------
-    if (pathname == "/css/stylus.css") {
-      mainController.functions.stylus(request, response);
-    }
-
-    //-------
-    //SCRIPTS
-    //-------
-
-    if (pathname == "/scripts/handlebars-v3.0.0.js") {
-      mainController.functions.handlebars(request, response);
-    }
-
-    if (pathname == "/scripts/test.js") {
-      mainController.functions.testjs(request, response);
-    }
-
-    if (pathname == "/updateRestaurant") {
+    } else if (pathname == "/updateRestaurant") {
       console.log("Routing single restaurant.");
       request.on('data', function (chunk) {
         var data = chunk.toString();
         var dataJSON = JSON.parse(data);
         mainController.functions.updateRestaurant(request, response, dataJSON);
       })
-    }
-
-    if (pathname == "/getRestaurants") {
+    } else if (pathname == "/getRestaurants") {
       mainController.functions.getRestaurants(request, response);
     }
 

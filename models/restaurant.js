@@ -23,7 +23,7 @@ var functions = {
   createInitials: function () {
     var wilkinsons = {
         name: "Wilkinson's Family Restaurant"
-      , image: "wilkinsons.jpg"
+      , image: "./static/css/images/wilkinson.jpg"
       , rating: 4.85
       , allRatings: [4, 5, 5, 5, 5, 5, 5]
     }
@@ -35,7 +35,7 @@ var functions = {
 
     var doubler = {
         name: "Double R Diner"
-      , image: "doubler.jpg"
+      , image: "./static/css/images/doubler.jpg"
       , rating: 4.5
       , allRatings: [4, 4, 4, 5, 5, 5]
     }

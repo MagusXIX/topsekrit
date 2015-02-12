@@ -12,86 +12,13 @@ var respond = function(request, response, write){
 
 var functions = {
   index: function (request, response) {
-    fs.readFile("./views/statics/mainView.html", function (err, data) {
+    fs.readFile("./views/mainView.html", function (err, data) {
       if (err) {
         console.log("YO! WE HAVE AN ERROR OVER HERE!");
         console.log(err);
       }
       respond(request, response, data);
     });
-  },
-
-
-  //------
-  //IMAGES
-  //------
-  doubler: function (request, response) {
-    fs.readFile("./views/css/images/doubler.jpg", function (err, data) {
-      if (err) {
-        console.log("YO! WE HAVE AN ERROR OVER HERE!");
-        console.log(err);
-      }
-      respond(request, response, data);
-    })
-  },
-
-  wilkinson: function (request, response) {
-    fs.readFile("./views/css/images/wilkinson.jpg", function (err, data) {
-      if (err) {
-        console.log("YO! WE HAVE AN ERROR OVER HERE!");
-        console.log(err);
-      }
-      respond(request, response, data);
-    })
-  },
-
-  redStar: function (request, response) {
-    fs.readFile("./views/css/images/redStar.png", function (err, data) {
-      if (err) {
-        console.log("YO! WE HAVE AN ERROR OVER HERE!");
-        console.log(err);
-      }
-      respond(request, response, data);
-    })
-  },
-
-  //-----------
-  //STYLESHEETS
-  //-----------
-  stylus: function (request, response) {
-    fs.readFile("./views/css/stylus.css", function (err, data) {
-      if (err) {
-        console.log("YO! WE HAVE AN ERROR OVER HERE!");
-        console.log(err);
-      }
-      response.setHeader('content-type', 'text/css');
-      respond(request, response, data);
-    })
-  },
-
-  //-------
-  //SCRIPTS
-  //-------
-  handlebars: function (request, response) {
-    fs.readFile("./views/scripts/handlebars-v3.0.0.js", function (err, data) {
-      if (err) {
-        console.log("Error finding handlebars script.");
-        console.log(err);
-      }
-      response.setHeader('content-type', 'application/javascript');
-      respond(request, response, data);
-    })
-  },
-
-  testjs: function (request, response) {
-    fs.readFile("./views/scripts/test.js", function (err, data) {
-      if (err) {
-        console.log("YO! WE HAVE AN ERROR OVER HERE!");
-        console.log(err);
-      }
-      response.setHeader('content-type', 'application/javascript');
-      respond(request, response, data);
-    })
   },
 
   updateRestaurant: function (request, response, data) {

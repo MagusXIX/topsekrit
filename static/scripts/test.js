@@ -56,7 +56,7 @@ var run = function () {
           //Kind of gross to have some HTML here, but for something so small it
           //Makes more sense than creating a new backbone view
           //Just to display a single image x times.
-          $('#starCan'+i).append("<img id='"+d+"' class='rating' src='/redStar.png' alt='WTFM8' data-rating='"+d+"' data-owner='"+restaurants[i]._id+"'></img>")
+          $('#starCan'+i).append("<img id='"+d+"' class='rating' src='../../static/css/images/redStar.png' alt='WTFM8' data-rating='"+d+"' data-owner='"+restaurants[i]._id+"'></img>")
         }
       }
       return this;
@@ -86,7 +86,7 @@ var run = function () {
           //Kind of gross to have some HTML here, but for something so small it
           //Makes more sense than creating a new backbone view
           //Just to display a single image x times.
-          $('#starCan'+i).append("<img id='"+d+"' class='rating' src='/redStar.png' alt='WTFM8' data-rating='"+d+"' data-owner='"+loadedRestaurants.models[i].attributes._id+"'></img>")
+          $('#starCan'+i).append("<img id='"+d+"' class='rating' src='.../../static/css/images/redStar.png' alt='WTFM8' data-rating='"+d+"' data-owner='"+loadedRestaurants.models[i].attributes._id+"'></img>")
         }
       }
       return this;
