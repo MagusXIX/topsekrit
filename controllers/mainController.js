@@ -14,11 +14,23 @@ var functions = {
   index: function (request, response) {
     fs.readFile("./views/mainView.html", function (err, data) {
       if (err) {
-        console.log("YO! WE HAVE AN ERROR OVER HERE!");
+        console.log("Error finding html index.");
         console.log(err);
+      } else {
+        respond(request, response, data);
       }
-      respond(request, response, data);
     });
+  },
+
+  bundle: function (request, response) {
+    fs.readFile("./bundle.js", function (err, data) {
+      if (err) {
+        console.log("Error findingle bundle.");
+        console.log(err);
+      } else {
+        respond(request, response, data);
+      }
+    })
   },
 
   updateRestaurant: function (request, response, data) {

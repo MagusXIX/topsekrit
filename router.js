@@ -31,6 +31,9 @@ var router = function () {
       })
     } else if (pathname == "/getRestaurants") {
       mainController.functions.getRestaurants(request, response);
+    } else if (pathname == "/bundle.js") {
+      console.log("Routing bundle!");
+      mainController.functions.bundle(request, response);
     }
 
   }
