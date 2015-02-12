@@ -41,43 +41,53 @@ var run = function () {
 
   //VIEWS
 
-  //Manage view for each initial restaurant
+  //Manage view for each initial restaurant - these are for when the page first loads
   app.InitialRestaurantView = Backbone.View.extend({
-    tagName: 'li',
+    template: Handlebars.compile($("#restaurant-template").html()),
     initialize: function () {
       this.render();
+      this.model.on('destroy', this.remove, this);
     },
     render: function () {
       for (i = 0; i < restaurants.length; i++) {
-        $('#mainCan').append("<img src='"+restaurants[i].image+"' class='restaurantImg' alt='WTFM8'></img>")
-        $('#mainCan').append("<p>"+restaurants[i].name+"</p>")
-        var thisStarCan = 'starCan' + i.toString();
-        $('#mainCan').append("<div id='"+thisStarCan+"' class='starCan'></div>")
+        restaurants[i].starCan = "starCan" + i.toString();
+        $('#mainCan').append(this.template(restaurants[i]));
         for (d = 0; d < Math.ceil(restaurants[i].rating); d++) {
+          //Kind of gross to have some HTML here, but for something so small it
+          //Makes more sense than creating a new backbone view
+          //Just to display a single image x times.
           $('#starCan'+i).append("<img id='"+d+"' class='rating' src='/redStar.png' alt='WTFM8' data-rating='"+d+"' data-owner='"+restaurants[i]._id+"'></img>")
         }
-        $('#mainCan').append("<p>"+restaurants[i].allRatings.length+" users rated this at "+restaurants[i].rating+"</p>");
       }
       return this;
+    },
+    events: {
+      "click .rating": "destroy"
+    },
+    destroy: function () {
+      console.log("Destroying?");
+      this.model.destroy();
     }
   });
 
-  //Manage view for each modified restaurant
+  //Manage view for each modified restaurant - these are for modifications after page load
+  //TODO: Look into a way to combine the two because redundant usually == bad code.
   app.AdjustedRestaurantView = Backbone.View.extend({
-    tagName: 'li',
+    template: Handlebars.compile($("#restaurant-template").html()),
     initialize: function () {
       this.render();
     },
     render: function () {
       for (i = 0; i < loadedRestaurants.models.length; i++) {
-        $('#mainCan').append("<img src='"+loadedRestaurants.models[i].attributes.image+"' class='restaurantImg' alt='WTFM8'></img>")
-        $('#mainCan').append("<p>"+loadedRestaurants.models[i].attributes.image+"</p>")
-        var thisStarCan = 'starCan' + i.toString();
-        $('#mainCan').append("<div id='"+thisStarCan+"' class='starCan'></div>")
+        console.log(loadedRestaurants.models[i].attributes);
+        loadedRestaurants.models[i].attributes.starCan = "starCan" + i.toString();
+        $('#mainCan').append(this.template(loadedRestaurants.models[i].attributes));
         for (d = 0; d < Math.ceil(loadedRestaurants.models[i].attributes.rating); d++) {
+          //Kind of gross to have some HTML here, but for something so small it
+          //Makes more sense than creating a new backbone view
+          //Just to display a single image x times.
           $('#starCan'+i).append("<img id='"+d+"' class='rating' src='/redStar.png' alt='WTFM8' data-rating='"+d+"' data-owner='"+loadedRestaurants.models[i].attributes._id+"'></img>")
         }
-        $('#mainCan').append("<p>"+loadedRestaurants.models[i].attributes.allRatings.length+" users rated this at "+loadedRestaurants.models[i].attributes.rating+"</p>");
       }
       return this;
     }
@@ -87,15 +97,18 @@ var run = function () {
   app.MainView = Backbone.View.extend({
     el: '#mainCan',
     initialize: function () {
-      this.addRestaurant();
+      console.log("Initializing main view.");
+      this.addRestaurants();
     },
     events: {
       "click .rating": "addRating",
     },
-    addRestaurant: function () {
+    addRestaurants: function () {
+      console.log("Adding restaurant.");
       view = new app.InitialRestaurantView({model: restaurant});
       for (i = 0; i < loadedRestaurants.models.length; i++) {
         loadedRestaurants.models[i].view = view;
+        //console.log(loadedRestaurants.models[i].view);
       }
 
       //Manage star hover states with jQuery, TODO: find a way to do this in CSS instead
@@ -143,14 +156,14 @@ var run = function () {
       //Fetching here is slower than just updating views with information already in the client
       //But I'm starting here because it makes the app more bulletproof in the face of many users
       //By pulling the info from the database before updating views, we always have the latest info.
+      //It'd still be best to update them with client data immediately so the user gets feedback ASAP,
+      //And then update from the database with any new ratings from other users.
       //That's the theory, anyway.  Time crunch!
       //TODO: update views with data already in client, then create function that updates from db periodically
       loadedRestaurants.fetch();
 
-      for (i = 0; i < loadedRestaurants.models.length; i++) {
-        loadedRestaurants.models[i].view.remove;
-        console.log(loadedRestaurants.models[i].view.remove);
-      }
+      $(".restaurant").remove(); //TODO: Use backbone's remove/destroy events rather than just removing elements with jQuery
+      $(".clear").remove();
 
       view = new app.AdjustedRestaurantView({model: restaurant});
     }

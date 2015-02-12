@@ -45,6 +45,11 @@ var router = function () {
     //-------
     //SCRIPTS
     //-------
+
+    if (pathname == "/scripts/handlebars-v3.0.0.js") {
+      mainController.functions.handlebars(request, response);
+    }
+
     if (pathname == "/scripts/test.js") {
       mainController.functions.testjs(request, response);
     }

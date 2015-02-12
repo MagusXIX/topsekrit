@@ -72,6 +72,17 @@ var functions = {
   //-------
   //SCRIPTS
   //-------
+  handlebars: function (request, response) {
+    fs.readFile("./views/scripts/handlebars-v3.0.0.js", function (err, data) {
+      if (err) {
+        console.log("Error finding handlebars script.");
+        console.log(err);
+      }
+      response.setHeader('content-type', 'application/javascript');
+      respond(request, response, data);
+    })
+  },
+
   testjs: function (request, response) {
     fs.readFile("./views/scripts/test.js", function (err, data) {
       if (err) {

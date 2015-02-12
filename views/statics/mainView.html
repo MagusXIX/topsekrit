@@ -10,22 +10,18 @@
 <body>
 
   <div id="mainCan"></div>
-  <h1>Click a star to rate!<h1>
+  <h1>Click a star to rate!</h1>
 
   <!--TEMPLATES-->
   <!--Images are added in the backbone code, for ease of adding correct src under time constraints. Could switch to handlebars or similar in future.-->
   <script type="text/template" id="restaurant-template">
-    <div class="restaurant">
-      <p><%- restaurants[i].name %></p>
-      <p><%- restaurants[i].allRatings.length %> users rated this at <%- restaurants[i].rating %></p>
-    </div>
-    <div class="clear"></div>
-  </script>
+    <div class="restaurant" id={{id}}>
+      <img src={{image}} class="restaurantImg" alt="WTFM8"></img>
+      <p>{{name}}</p>
+      <div id={{starCan}} class="starCan">
 
-  <script type="text/template" id="fetchedRestaurant-template">
-    <div class="restaurant">
-      <p><%- fetchedRestaurants[i].name %></p>
-      <p><%- fetchedRestaurants[i].allRatings.length %> users rated this at <%- fetchedRestaurants[i].rating %></p>
+      </div>
+      <p>{{allRatings.length}} users rated this restaurant at {{rating}} stars.</p>
     </div>
     <div class="clear"></div>
   </script>
@@ -34,6 +30,7 @@
   <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js" type="text/javascript"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone-min.js" type="text/javascript"></script>
+  <script src="../scripts/handlebars-v3.0.0.js"></script>
 
   <!-- SCRIPTS -->
   <script type="text/javascript" src="../scripts/test.js"></script>
