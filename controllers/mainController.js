@@ -39,10 +39,12 @@ var functions = {
   },
 
   getRestaurants: function (request, response) {
+    console.log("Getting restaurants.");
     Restaurants.functions.retrieveRestaurants(request, response);
   },
 
   sendRestaurants: function (request, response, restaurants) {
+    console.log("Sending restaurants.");
     response.setHeader('content-type', 'application/json');
     respond(request, response, JSON.stringify(restaurants));
   }

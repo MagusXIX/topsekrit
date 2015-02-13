@@ -48,6 +48,7 @@ var functions = {
   },
 
   retrieveRestaurants: function (request, response) {
+    console.log("Querying db for restaurants.");
     db.restaurants.find({}, function (err, restaurants) {
       if (err) {
         console.log("Error in retrieveRestaurants");
@@ -59,6 +60,7 @@ var functions = {
   },
 
   updateRestaurant: function (request, response, restaurant) {
+    console.log("Finding and modifying.");
     db.restaurants.findAndModify({
       query: {name: restaurant.name},
       update: {name: restaurant.name, image: restaurant.image, rating: restaurant.rating, allRatings: restaurant.allRatings, id: restaurant._id, view: restaurant.view},

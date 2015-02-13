@@ -1,0 +1,11 @@
+mainView: Backbone.View.extend({
+  template: Handlebars.compile($("#restaurant-template").html()),
+  initialize: function () {
+    this.render();
+  },
+  render: function () {
+    console.log("Rendering main view.");  
+  }
+})
+
+exports.mainView = mainView;

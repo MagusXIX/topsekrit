@@ -30,6 +30,7 @@ var router = function () {
         mainController.functions.updateRestaurant(request, response, dataJSON);
       })
     } else if (pathname == "/getRestaurants") {
+      console.log("Routing get request.");
       mainController.functions.getRestaurants(request, response);
     } else if (pathname == "/bundle.js") {
       console.log("Routing bundle!");
