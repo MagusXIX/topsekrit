@@ -10,13 +10,14 @@ I used mongodb for the database because it's quick and easy to use for rapid pro
 
 Server side is just raw node.js.  I generally prefer to create new projects in raw node as opposed to using one of the many framework options available because I feel it gives me more flexibility to design a project according to the project's needs as opposed to the constraints of a framework.  (Sometimes frameworks are nice, though.)  That said, the architecture for this project is about as basic as the project itself.  Nothing fancy.  It starts in the start.js file which handles everything that needs to happen before the server fires up, then passes off to the router.js file which starts up the server and handles routes.  Routes typically go to mainController.js where any relevant data is sent wherever it needs to go.
 
-The client side code is just a very basic html file with a template in it, a very basic CSS file that (for now) only exists to make things readable.  Fancy animations and color schemes could come later if necessary, but first I focused on getting things working.  All the backbone code is in the backbone folder, and it's all run via the main.js file.
+The client side code is just a very basic html file with a template in it, a very basic CSS file that (for now) only exists to make things readable.  Fancy animations and color schemes could come later if necessary, but first I focused on getting things working.  All the backbone code is in the backbone folder, and it's all run via the main.js file.  Like I said, I'm not happy with a few things on the client side, but I wanted to get this in quick.
 
 Getting this working should be simple:
-1) Make sure you have node and npm installed.
+1) Make sure you have node, npm, and mongodb installed.
 2) Clone (or otherwise pilfer) the project from my github: https://github.com/MagusXIX/topsekrit
 3) Navigate to the root directory and npm install (the package.json dependencies should take care of everything for you.)
-4) From the root directory, node start.js
+4) Start up your database (the mongod command, wherever you installed mongo.)
+5) From the root directory, node start.js
 
 If for whatever reason the bundle.js file isn't there or isn't working, just go to the root directory and type browserify static/scripts/main.js -o bundle.js
 
