@@ -5,7 +5,7 @@
   "main": "start.js",
   "dependencies": {
       "mongojs": "0.18.x",
-      "st": "0.5.x"
+      "st": "1.2.x"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
